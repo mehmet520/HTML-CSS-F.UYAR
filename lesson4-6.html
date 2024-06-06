@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .figure-container {
+            text-align: center;
+        }
+
+        .figure-container figcaption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555
+        }
+        input, select {margin:5px}
+    </style>
+</head>
+
+<body>
+    <p>samp etiketi, sistem veya program çıktısı olan metinleri belirtmek için kullanılır. Ornek:<br>Kontrol Ciktisi: 
+        <samp>Operation comleted successfully</samp></p>
+    <p><q>q-quote icindeki yazi</q> boyle gorunur.</p>
+    <p>Öğretmenimiz, <q>John dedi ki, <q>Çalışmak çok önemli.</q></q> şeklinde belirtti.</p>
+    <address>address etiketi:<br>Daimlerstr 4<br>50827 Koln</address>
+    <figure class="figure-container">
+        <figcaption style="margin-bottom:10px; font-style:normal; color:red"><strong>IFLC Features</strong></figcaption>
+
+        <img class="img" width="100" height="" src="image/IFLC.png" alt="IFLC" title="IFLC resim"
+            style="border:3px solid red" />
+        <figcaption>IFLC Organizasyon Bilgileri</figcaption>
+    </figure>
+    <p title="XHTML">eXtensible Hyper Text Markup Language</p>
+    <p>En sevdigim siir<cite>Medinenin Gulu</cite> siiridir.</p>
+    <blockquote>
+        <cite>Sessiz Gemi</cite>
+        <pre>
+        "Artık demir almak günü gelmişse zamandan Meçhule giden bir gemi kalkar bu limandan.
+        Dünyada sevilmiş ve seven nafile bekler; Bilmez ki giden sevgililer dönmeyecekler.
+        Birçok gidenin her biri memnun ki yerinden, Birçok seneler geçti; dönen yok seferinden."
+        <br><cite>Yahya Kemal Beyatli</cite>
+    </pre>
+    </blockquote>
+    <code>x=0,y=5</code>
+    <p>Bu urunun fiyati <del>100</del> yerine artik 90 Euro'dur</p>
+
+    <p>abbr etiketinin kullanimi:  <abbr title="Hyper Text Markup Language">HTML</abbr> bir kisaltmadir.</p>
+
+    <p><mark>mark etiketinin kullanimi..</mark></p>
+
+    <p>
+        <mark>meter value="0.7"</mark> etiketinin kullanimi: <meter value="0.7"></meter> 70% doluluk oranini gosterir.
+        <br><mark>value: 5; min:0; max:10</mark>
+        durumunu gosterir: 
+        <meter value="5" min="0" max="10"></meter>
+    </p>
+
+    <p>
+        Disk Kullanimi: 
+        <meter value="81" min="0" max="100" low="30" high="80" optimum="50"></meter>
+    </p>
+
+</body>
+
+</html>

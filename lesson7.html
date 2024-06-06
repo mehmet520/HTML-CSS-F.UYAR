@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,
+        select {
+            margin: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <form id="fruitForm">
+        <p>Hangi meyveleri seviyorsunuz?</p>
+        <input type="checkbox" id="apple" name="fruit" value="Elma">
+        <label for="apple">Elma</label><br>
+        <input type="checkbox" id="banana" name="fruit" value="Muz">
+        <label for="banana">Muz</label><br>
+        <input type="checkbox" id="cherry" name="fruit" value="Kiraz">
+        <label for="cherry">Kiraz</label><br>
+        <button type="button" onclick="showSelectedFruits()">Seçilenleri Göster</button>
+    </form>
+
+    <script>
+        function showSelectedFruits() {
+            // Daha önce oluşturulmuş olan <h3> ve <ul> elemanlarını kaldır
+            var existingHeading = document.getElementById('selectedFruitsHeading');
+            var existingList = document.getElementById('selectedFruitsList');
+            if (existingHeading) existingHeading.remove();
+            if (existingList) existingList.remove();
+
+            // Yeni <h3> elemanını oluştur
+            var heading = document.createElement('h3');
+            heading.id = 'selectedFruitsHeading';
+            heading.textContent = 'Seçilen Meyveler:';
+
+            // Yeni <ul> elemanını oluştur
+            var list = document.createElement('ul');
+            list.id = 'selectedFruitsList';
+
+            // <form> etiketinden sonra <h3> ve <ul> elemanlarını ekle
+            var form = document.getElementById('fruitForm');
+            form.insertAdjacentElement('afterend', heading);
+            heading.insertAdjacentElement('afterend', list);
+
+            // Tüm checkbox öğelerini seç
+            var checkboxes = document.querySelectorAll('input[name="fruit"]:checked');
+
+            // Her bir seçili checkbox için liste elemanı oluştur ve ekrana yazdır
+            checkboxes.forEach(function (checkbox) {
+                var listItem = document.createElement('li');
+                listItem.textContent = checkbox.value;
+                list.appendChild(listItem);
+            });
+        }
+    </script>
+
+
+
+
+    <h3>form Etiketi</h3>
+    <form action="#" method="get">
+        <label for="name">Adiniz: </label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">E-posta: </label>
+        <input type="email" id="email" name="email"><br>
+
+        <label for="pass">Passowrt: </label>
+        <input type="password" name="pass" id="pass"><br>
+
+        <input type="checkbox" name="newsletter" value="newsletter">Bultene abone ol.</input><br>
+        <input type="checkbox" name="dergi" value="dergi">Dergiye abone ol.</input><br>
+
+        <input type="radio" name="gender" value="male"> Male</input>
+        <input type="radio" name="gender" value="female">Female</input><br>
+
+        <select name="country" id="selectCountry">
+            <option value="">Select Country</option>
+            <option value="tr">Turkei</option>
+            <option value="us">ABD</option>
+        </select><br>
+        <script>
+            document.getElementById('selectCountry').addEventListener("change", function (event) {
+                let selectCountry = document.getElementById("selectCountry");
+                let existingDiv = document.getElementById("divSelectCountry");
+                if(existingDiv) existingDiv.remove();
+                let div = document.createElement("div");
+                selectCountry.insertAdjacentElement('afterend', div);
+                div.id='divSelectCountry';
+                div.textContent = 'Div Element'
+                let listCountry = document.createElement('ul');
+                // listCountry.id = 'listCountry';
+                div.appendChild(listCountry);
+
+                let options = selectCountry.options;
+                let countries = Array.from(options).filter(option => option.value != '')
+                    .map(option => option.textContent);
+                countries.forEach(function (country) {
+                    let listItem = document.createElement('li');
+                    listItem.textContent = country;
+                    listCountry.appendChild(listItem);
+                });
+                let selectedCountry = event.target.options[event.target.selectedIndex].textContent.toUpperCase();
+                listCountry.innerHTML+='<br>' +selectedCountry
+                console.log(event.target.options);
+                console.log(event.target.options[1]);
+                console.log(event.target.options[event.target.selectedIndex]);
+                console.log(event.target.options[event.target.selectedIndex].textContent);
+                console.log(event.target.options[event.target.selectedIndex].value);
+                console.log(event.target.options.length);
+            });
+        </script>
+
+        <textarea name="message" placeholder="Not" rows="3" cols="40"></textarea><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset">
+    </form><br>
+    <form action="#" method="get">
+
+        <label for="file">Dosya yukle:</label>
+        <input type="file" name="file" id="file"><br>
+        <button>&#10003; Tamam</button>
+
+        <input type="submit" value="upload">
+    </form><br><br>
+
+    <form action="#" method="get">
+        <label for="username">Enter username</label>
+        <input type="text" name="username" id="username2" disabled size="15" value="myilmaz"
+            placeholder="Enter username" autocomplete="on" autofocus="on">
+        <label for="password">Enter Passwort</label>
+        <input type="password" name="pass" id="pass2" disabled maxlength="15" onclick="alert('15 Char')"
+            placeholder="Enter password"><br>
+        <label for="email">E-mail adresini gir:</label>
+        <input type="email" name="email" id="email2" disabled>
+
+
+        <label for="gender">Cinsiyeti giriniz:</label>
+        <input type="radio" checked name="gender" value="male" title="Male">Male</input>
+        <input type="radio" name="gender" value="female">Female</input><br>
+
+        <p>Hangi meyveleri seviyorsunuz?</p>
+        <input type="checkbox" id="apple" name="fruit" value="apple" disabled>
+        <label for="apple">Elma</label>
+        <input type="checkbox" id="banana" name="fruit" value="banana">
+        <label for="banana" style="margin-right:30px">Muz</label>
+        <button type="button" onclick="checkAll()">Check All</button>
+        <button type="button" onclick="unCheckAll()" id="uncheckButton">Uncheck All</button><br>
+        <p class="fruits"></p>
+        <button type="button" onclick="showSelectedFruits()">Show Selected Fruits</button><br>
+        <script>
+            function checkAll() {
+                checkBoxes = document.querySelectorAll("[name='fruit']:disabled")
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    checkBoxes[i].checked = true;
+                }
+                // showSelectedFruits()
+            }
+            function unCheckAll() {
+                checkBoxes = document.querySelectorAll("input[name='fruit']")
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    checkBoxes[i].checked = false;
+                }
+            }
+            function showSelectedFruits() {
+                let existingHeading = document.getElementById("newHeading");
+                if (existingHeading) existingHeading.remove();
+                let uncheckButton = document.getElementById("uncheckButton");
+                let newHeading = document.createElement("h3");
+                newHeading.id = 'newHeading';
+                newHeading.innerText = 'Secilen Meyveler';
+                uncheckButton.insertAdjacentElement('afterend', newHeading);
+
+                let fruitListElement = document.getElementById("fruitList");
+                if (!fruitListElement) {
+                    fruitListElement = document.createElement('ul');
+                    fruitListElement.id = 'fruitList';
+                    newHeading.insertAdjacentElement('afterend', fruitListElement);
+                } else {
+                    fruitListElement.innerHTML = '';
+                }
+
+                let fruits = document.getElementsByName("fruit");
+                let meyveler = Array.from(fruits);
+                meyveler.filter(fruit => fruit.checked).map(fruit => fruit.value)
+                    .forEach(function (fruit) {
+                        let fruitItemElement = document.createElement('li');
+                        fruitItemElement.textContent = fruit;
+                        fruitListElement.appendChild(fruitItemElement);
+                    });
+            };
+            // var fruits=document.querySelectorAll("input[name='fruit']")
+            // for(let i=0;i<fruits.length;i++) {
+            //     let list = document.createElement('ul');
+            //     let listItem = document.createElement('li');
+            //     let content = document.getElementsByClassName('fruits')[1].textContent = fruits[0].value
+
+            // }
+        </script>
+
+        <label for="country">Select Country</label>
+        <select name="country" id="" title="Select Country">
+            <option value="">Select Country</option>
+            <option value="tr">Turkei</option>
+            <option value="de">Deutschland</option>
+        </select><br>
+        <label for="file">Upload File </label>
+        <input type="file" name="file" placeholder="Dosya Sec"><br>
+
+        <h5>Hidden Input</h5>
+        <input type="hidden" name="gizli" value="Allah buyuktur.">
+
+        <h4>url tag</h4>
+        <label for="url">Bir URL url="http:// giriniz</label>
+        <input type="url" name="url"><br>
+
+        <input type="tel" maxlength="13" minlength="11" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+            placeholder="Telefon numarasi giriniz"><br>
+
+        <button type="submit">&#10004; Submit Form</button>
+        <button type="reset" disabled>&#10008; Reset</button>
+        <button type="button" onclick="disableForm()">Aktivate Form</button>
+
+    </form>
+
+    <script>
+        function disableForm() {
+            document.getElementsByName("username")[0].disabled = false;
+            document.getElementById("pass2").disabled = false;
+            document.getElementById("email2").disabled = false;
+            document.querySelector("button[type='reset']").disabled = false;
+
+            // document.getElementsByTagName("button")[0].disabled = true;
+        }
+
+    </script><br><br>
+
+
+    <script>
+        // XML belgesini oluştur
+        var parser = new DOMParser();
+        var xmlString = `
+            <root xmlns:h="http://www.w3.org/TR/html4/">
+                <h:table>
+                    <h:tr>
+                        <h:td>Apples</h:td>
+                        <h:td>Bananas</h:td>
+                    </h:tr>
+                </h:table>
+            </root>`;
+        var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+        // Belirli ad alanına ve etiket adına sahip öğeleri seç
+        var namespaceURI = "http://www.w3.org/TR/html4/";
+        var elements = xmlDoc.getElementsByTagNameNS(namespaceURI, "td");
+
+        // Seçilen öğelerin değerlerini göster
+        for (var i = 0; i < elements.length; i++) {
+            console.log(elements[i].textContent);
+        }
+    </script>
+</body>
+
+</html>
